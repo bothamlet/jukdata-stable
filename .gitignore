@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+next-env.d.ts
+
+# Environment variables - keep .env.example tracked as the template
+.env*
+!.env.example
+
+# TypeScript incremental build info
+tsconfig.tsbuildinfo
+
+# Local deployment notes: server/infrastructure detail, not part of the site
+DEPLOYMENT-CSP.md
+
+# v0 sandbox internal files
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
+.snowflake/
+.v0-trash/
+.vercel/
+
+# Local tooling (contains machine-specific paths)
+.codex-bin/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+
+# Keys and certificates
+*.pem
+*.key
+*.p12

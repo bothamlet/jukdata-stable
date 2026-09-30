@@ -1,0 +1,189 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand palette */
+  --color-ink: #0f0d0b;
+  --color-ink-soft: #15120f;
+  --color-bone: #f0ede8;
+  --color-bone-soft: #e6e2db;
+  --color-brand: #fb6202;
+  --color-brand-soft: #ff7d2e;
+  --color-brand-muted: #c84f02;
+
+  --color-background: #0f0d0b;
+  --color-foreground: #f0ede8;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+}
+
+@layer base {
+  * {
+    border-color: color-mix(in oklab, #f0ede8 12%, transparent);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 0;
+  }
+  section[id] {
+    scroll-margin-top: 0;
+  }
+  #technologijos {
+    scroll-margin-top: 104px;
+  }
+  #top {
+    scroll-margin-top: 0;
+  }
+  ::selection {
+    background-color: var(--color-brand);
+    color: #fff;
+  }
+}
+
+@utility section-pad {
+  padding-block: 120px;
+}
+@media (max-width: 768px) {
+  .section-pad {
+    padding-block: 80px;
+  }
+  html {
+    scroll-padding-top: 0;
+  }
+  section[id] {
+    scroll-margin-top: 0;
+  }
+  #technologijos {
+    scroll-margin-top: 88px;
+  }
+  #top {
+    scroll-margin-top: 0;
+  }
+}
+
+@utility glow-brand {
+  box-shadow: 0 0 80px -20px rgba(251, 98, 2, 0.55);
+}
+
+.hero-css-bg {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.22) 56%, rgba(0, 0, 0, 0.2)),
+    radial-gradient(ellipse at 78% 26%, rgba(255, 177, 78, 0.68), transparent 32%),
+    radial-gradient(ellipse at 64% 58%, rgba(238, 203, 152, 0.34), transparent 33%),
+    radial-gradient(ellipse at 92% 8%, rgba(251, 98, 2, 0.48), transparent 30%),
+    linear-gradient(112deg, #050403 0%, #110905 30%, #482108 58%, #a74408 82%, #df6d1d 100%),
+    #0f0d0b;
+  overflow: hidden;
+}
+
+.hero-css-bg::before,
+.hero-css-bg::after {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  background-repeat: no-repeat;
+  opacity: 0.65;
+}
+
+.hero-css-bg::before {
+  background:
+    linear-gradient(13deg, transparent 36%, rgba(255, 194, 95, 0.24) 36.4%, transparent 37.1%),
+    linear-gradient(-8deg, transparent 48%, rgba(244, 172, 72, 0.2) 48.4%, transparent 49.2%),
+    linear-gradient(18deg, transparent 64%, rgba(255, 126, 28, 0.14) 64.3%, transparent 65%);
+  animation: hero-css-drift 16s ease-in-out infinite alternate;
+}
+
+.hero-css-bg::after {
+  background:
+    radial-gradient(ellipse at 76% 44%, rgba(241, 211, 160, 0.34), transparent 20%),
+    radial-gradient(ellipse at 88% 20%, rgba(255, 125, 46, 0.3), transparent 28%),
+    linear-gradient(10deg, transparent 57%, rgba(130, 77, 24, 0.2) 57.5%, transparent 58.2%);
+  mix-blend-mode: screen;
+  animation: hero-css-pulse 12s ease-in-out infinite alternate;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hero-css-bg::before,
+  .hero-css-bg::after {
+    animation: none;
+  }
+}
+
+@keyframes hero-css-drift {
+  from {
+    transform: translate3d(-1.5%, 0, 0) scale(1.02);
+  }
+  to {
+    transform: translate3d(1.5%, -1%, 0) scale(1.04);
+  }
+}
+
+@keyframes hero-css-pulse {
+  from {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.75;
+    transform: scale(1.035);
+  }
+}
+
+@utility marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.tech-logo-track {
+  animation: marquee 40s linear infinite;
+}
+
+.tech-logo-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .tech-logo-track {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
