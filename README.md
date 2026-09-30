@@ -4,6 +4,8 @@ Marketing site for JUK Data, a data-solutions studio. One page with sections for
 technologies, projects, team and contact, plus a privacy policy. Lithuanian language. Static
 export: no server and no API.
 
+![JUKdata homepage: navigation, headline and call to action buttons over the canvas hero](public/screenshots/hero.webp)
+
 ## Stack
 
 | | |
