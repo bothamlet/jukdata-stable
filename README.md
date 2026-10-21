@@ -2,7 +2,7 @@
 
 Marketing site for JUK Data, a data-solutions studio. One page with sections for services,
 technologies, projects, team and contact, plus a privacy policy. Lithuanian language. Static
-export: no server and no API.
+export: no application server and no API.
 
 ![JUKdata homepage: navigation, headline and call to action buttons over the canvas hero](public/screenshots/hero.webp)
 
@@ -27,9 +27,19 @@ export: no server and no API.
 | `pnpm dev` | Dev server on `http://localhost:3000` |
 | `pnpm build` | Static export to `out/` |
 | `pnpm typecheck` | `tsc --noEmit` |
-| `pnpm start` | Serve a production build |
 
 Node 20.9 or newer (Next 16 requirement).
+
+### Preview the export
+
+`next start` cannot serve a build with `output: 'export'`, so there is no `start` script. Serve the
+exported `out/` directory with a static file server instead; Python 3's built-in one needs nothing
+else installed:
+
+```sh
+pnpm build
+python3 -m http.server 3000 --directory out   # http://localhost:3000
+```
 
 ## Environment
 

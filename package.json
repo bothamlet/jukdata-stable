@@ -6,7 +6,6 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "export": "next build --webpack",
-    "start": "next start",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
