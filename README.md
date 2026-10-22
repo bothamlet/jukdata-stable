@@ -1,8 +1,8 @@
 # JUKdata
 
-Marketing site for JUK Data, a data-solutions studio. One page with sections for services,
-technologies, projects, team and contact, plus a privacy policy. Lithuanian language. Static
-export: no application server and no API.
+A fictional case study. A corporate website for an imaginary Lithuanian data solutions firm. One
+page with sections for services, technologies, projects, team and contact, plus a privacy policy.
+Lithuanian language. Static export: no application server and no API.
 
 ![JUKdata homepage: navigation, headline and call to action buttons over the canvas hero](public/screenshots/hero.webp)
 
