@@ -1,89 +1,32 @@
 # JUKdata
 
-A fictional case study. A corporate website for an imaginary Lithuanian data solutions firm. One
-page with sections for services, technologies, projects, team and contact, plus a privacy policy.
-Lithuanian language. Static export: no application server and no API.
+A fictional Lithuanian data consultancy, presented as a one-page website. The design uses a custom canvas hero, animated section transitions, and a responsive layout.
 
-![JUKdata homepage: navigation, headline and call to action buttons over the canvas hero](public/screenshots/hero.webp)
+![JUKdata homepage and canvas hero](public/screenshots/hero.webp)
 
-## Stack
+## Run
 
-| | |
-| --- | --- |
-| Framework | Next.js 16 App Router, `output: 'export'` |
-| UI | React 19, TypeScript |
-| Styling | Tailwind CSS v4 via PostCSS |
-| Motion | `motion` for section transitions, a hand-written canvas hero |
-| Icons | `lucide-react` |
-| Analytics | Vercel Analytics; Google Tag Manager and Consent Mode when configured |
-| Forms | Formspree endpoint from `NEXT_PUBLIC_FORMSPREE_ENDPOINT` |
-| Consent | Silktide consent manager from jsDelivr, pinned with SRI |
+Use Node.js 20.9+ and pnpm.
 
-## Commands
+```sh
+pnpm install --frozen-lockfile
+pnpm dev        # http://localhost:3000
+pnpm typecheck
+```
 
-| Command | Purpose |
-| --- | --- |
-| `pnpm install` | Install dependencies |
-| `pnpm dev` | Dev server on `http://localhost:3000` |
-| `pnpm build` | Static export to `out/` |
-| `pnpm typecheck` | `tsc --noEmit` |
-
-Node 20.9 or newer (Next 16 requirement).
-
-### Preview the export
-
-`next start` cannot serve a build with `output: 'export'`, so there is no `start` script. Serve the
-exported `out/` directory with a static file server instead; Python 3's built-in one needs nothing
-else installed:
+Next.js exports static files to `out/`. Preview them with a static server:
 
 ```sh
 pnpm build
-python3 -m http.server 3000 --directory out   # http://localhost:3000
+python3 -m http.server 3000 --bind 127.0.0.1 --directory out
 ```
-
-## Environment
-
-Copy `.env.example` to `.env.local`. Both values end up in the rendered page; they are settings,
-not secrets.
-
-| Variable | Purpose | When unset |
-| --- | --- | --- |
-| `NEXT_PUBLIC_FORMSPREE_ENDPOINT` | Contact form submissions | The form posts to a placeholder endpoint |
-| `NEXT_PUBLIC_GTM_ID` | Google Tag Manager container | No Tag Manager script is rendered |
 
 ## Structure
 
-```text
-app/
-├─ layout.tsx                 metadata, fonts, consent defaults, Tag Manager
-├─ page.tsx                   the page: section order
-└─ privatumo-politika/        privacy policy
-components/
-├─ hero.tsx, hero-canvas.tsx  canvas hero
-├─ navbar.tsx                 navigation
-├─ anchor-navigation.tsx      anchor scroll offsets
-├─ services.tsx               services section
-├─ technologies.tsx           technology grid
-├─ projects.tsx               project case studies
-├─ team.tsx                   team section
-├─ contact.tsx                contact details and the Formspree form
-└─ footer.tsx, logo.tsx, icons.tsx
-public/                       static assets and technology icons
-```
+- `app/` — page layout, metadata, consent defaults, and the privacy-policy page.
+- `components/` — page sections, canvas animation, and contact form.
+- `public/` — logos, images, and the preview screenshot.
 
-## Content
+The site uses Next.js, React, TypeScript, Tailwind CSS, and Motion. It has no application server or API.
 
-- Section copy lives in its component. `team.tsx` and `projects.tsx` hold their entries as
-  constants at the top of the file.
-- Contact details are in `components/contact.tsx`. The email, phone and LinkedIn values are
-  placeholders (`info@example.com`, `+370 600 00xxx`, `href="#"`).
-- `app/privatumo-politika/page.tsx` renders a heading and a date only.
-
-## Notes
-
-- `next.config.mjs` sets `output: 'export'` and `trailingSlash: true`, so a build produces a
-  static `out/` directory of HTML and assets. Images are unoptimized because a static export has
-  no image server.
-- Consent Mode defaults to denied until the Silktide banner records a choice;
-  `security_storage` is granted by default. Both are set in `app/layout.tsx`.
-- `DEPLOYMENT-CSP.md` is a local deployment note and is gitignored.
+The company, contact details, and privacy-policy page are demo content. The form has no live destination by default. To configure Formspree or Google Tag Manager for a deployment, copy [`.env.example`](.env.example) to `.env.local`. Both settings are public in the built site; don't put secrets there.

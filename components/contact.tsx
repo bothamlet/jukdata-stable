@@ -4,9 +4,7 @@ import { useState, type FormEvent } from 'react'
 import { ArrowRight, Mail, CalendarCheck, Phone } from 'lucide-react'
 import { LinkedinIcon } from './icons'
 
-// Set NEXT_PUBLIC_FORMSPREE_ENDPOINT to the form's real endpoint to enable
-// submissions. The value is public in the rendered page either way, so this is
-// about not shipping the owner's live form id in the repository, not secrecy.
+// A real deployment supplies its own public Formspree URL.
 const FORMSPREE_ENDPOINT =
   process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT ??
   'https://formspree.io/f/your-form-id'
